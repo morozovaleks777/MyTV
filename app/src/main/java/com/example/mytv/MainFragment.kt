@@ -16,8 +16,14 @@ import java.util.*
 
 
 class MainFragment : BrowseSupportFragment() {
+    lateinit var movy: Feed.Movy
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+        val main1=MainActivity()
+        val obj= main1.getJSONFromAssets()
+        val moshi: Moshi = Moshi.Builder().build()
+        val jsonadapter: JsonAdapter<Feed.Movy> = moshi.adapter(Feed.Movy::class.java)
+        val movy = jsonadapter.fromJson(obj)
         setUI()
         loadRows()
     }
@@ -31,7 +37,7 @@ class MainFragment : BrowseSupportFragment() {
         rows1Adapter.add(SingleRowView("movie",Drawable.createFromPath("drawable/movie.png")))
         rows1Adapter.add(SingleRowView("moviemovie",Drawable.createFromPath("drawable/movie.png")))
         rows1Adapter.add(SingleRowView("moviemoviemovie",Drawable.createFromPath("drawable/movie.png")))
-
+rows1Adapter.add(listOf(movy))
 
 
 val windowAdapter=ArrayObjectAdapter(ListRowPresenter())
