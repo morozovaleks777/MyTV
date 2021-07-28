@@ -1,7 +1,6 @@
 package com.example.mytv
 
 import android.os.Bundle
-import android.os.PersistableBundle
 import androidx.fragment.app.FragmentActivity
 import java.io.IOException
 import java.nio.charset.Charset

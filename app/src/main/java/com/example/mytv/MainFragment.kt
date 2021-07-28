@@ -33,10 +33,10 @@ class MainFragment : BrowseSupportFragment() {
         val category2 = HeaderItem(1, "series")
 
         val rows1Adapter = ArrayObjectAdapter(CardPresenter())
-
-        rows1Adapter.add(SingleRowView("movie",Drawable.createFromPath("drawable/movie.png")))
-        rows1Adapter.add(SingleRowView("moviemovie",Drawable.createFromPath("drawable/movie.png")))
-        rows1Adapter.add(SingleRowView("moviemoviemovie",Drawable.createFromPath("drawable/movie.png")))
+//
+//        rows1Adapter.add(SingleRowView("movie",Drawable.createFromPath("drawable/movie.png")))
+//        rows1Adapter.add(SingleRowView("moviemovie",Drawable.createFromPath("drawable/movie.png")))
+//        rows1Adapter.add(SingleRowView("moviemoviemovie",Drawable.createFromPath("drawable/movie.png")))
 rows1Adapter.add(listOf(movy))
 
 
