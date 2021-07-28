@@ -11,21 +11,21 @@ class MainActivity : FragmentActivity() {
         setContentView(R.layout.activity_main)
 
     }
-    fun getJSONFromAssets(): String? {
-
-        var json: String? = null
-        val charset: Charset = Charsets.UTF_8
-        try {
-            val myFeedJSONFile = assets.open("feed.json")
-            val size = myFeedJSONFile.available()
-            val buffer = ByteArray(size)
-            myFeedJSONFile.read(buffer)
-            myFeedJSONFile.close()
-            json = String(buffer, charset)
-        } catch (ex: IOException) {
-            ex.printStackTrace()
-            return null
-        }
-        return json
-    }
+//    fun getJSONFromAssets(): String? {
+//
+//        var json: String? = null
+//        val charset: Charset = Charsets.UTF_8
+//        try {
+//            val myFeedJSONFile = assets.open("feed.json")
+//            val size = myFeedJSONFile.available()
+//            val buffer = ByteArray(size)
+//            myFeedJSONFile.read(buffer)
+//            myFeedJSONFile.close()
+//            json = String(buffer, charset)
+//        } catch (ex: IOException) {
+//            ex.printStackTrace()
+//            return null
+//        }
+//        return json
+//    }
 }
