@@ -4,44 +4,45 @@ package com.example.mytv
 import android.os.Bundle
 import androidx.core.content.ContextCompat
 import androidx.leanback.app.BrowseSupportFragment
-import androidx.leanback.widget.ArrayObjectAdapter
-import androidx.leanback.widget.HeaderItem
-import androidx.leanback.widget.ListRow
-import androidx.leanback.widget.ListRowPresenter
+import androidx.leanback.widget.*
 import com.squareup.moshi.JsonAdapter
 import com.squareup.moshi.Moshi
 import java.io.IOException
 import java.nio.charset.Charset
+import java.util.*
+
 
 
 class MainFragment : BrowseSupportFragment() {
-    lateinit var movie: Feed.Movy
+
+    var feed: Feed?=null
+
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-      //  val main1=MainActivity()
         val obj=getJSONFromAssets()
-        val moshi: Moshi = Moshi.Builder().build()
-        val jsonadapter: JsonAdapter<Feed.Movy> = moshi.adapter(Feed.Movy::class.java)
-         movie = jsonadapter.fromJson(obj)!!
+        val jsonadapter: JsonAdapter<Feed> = Moshi.Builder().build().adapter(Feed::class.java)
+         feed = obj?.let {  jsonadapter.fromJson(it)}
         setUI()
         loadRows()
     }
 
     private fun loadRows() {
+
         val category1 = HeaderItem(0, "movies")
         val category2 = HeaderItem(1, "series")
-
         val rows1Adapter = ArrayObjectAdapter(CardPresenter())
-//
-//        rows1Adapter.add(SingleRowView("movie",Drawable.createFromPath("drawable/movie.png")))
-//        rows1Adapter.add(SingleRowView("moviemovie",Drawable.createFromPath("drawable/movie.png")))
-//        rows1Adapter.add(SingleRowView("moviemoviemovie",Drawable.createFromPath("drawable/movie.png")))
-rows1Adapter.add(listOf(movie))
+        val rows2Adapter = ArrayObjectAdapter(SeriesCardPresenter())
 
 
-val windowAdapter=ArrayObjectAdapter(ListRowPresenter())
-        windowAdapter.add( ListRow(category1,rows1Adapter))
-        adapter = windowAdapter
+        for (i in 0 until 10) {
+            if (i != 0) {
+                rows1Adapter.addAll(0,feed?.movies)
+                rows2Adapter.addAll(0,feed?.series)
+            }}
+        val windowAdapter=ArrayObjectAdapter(ListRowPresenter())
+            windowAdapter.add( 0,ListRow(category1,rows1Adapter),)
+            windowAdapter.add( 1,ListRow(category2,rows2Adapter))
+            adapter = windowAdapter
     }
 
 
@@ -56,7 +57,7 @@ val windowAdapter=ArrayObjectAdapter(ListRowPresenter())
 
     fun getJSONFromAssets(): String? {
 
-        var json: String? = null
+        var json: String?=null
         val charset: Charset = Charsets.UTF_8
         try {
             val myFeedJSONFile =context?.assets?.open("feed.json")
