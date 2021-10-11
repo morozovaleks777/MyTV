@@ -32,6 +32,7 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.3.1'
     //Moshi Core
     implementation "com.squareup.moshi:moshi:1.12.0"
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     //Moshi Codegen
     kapt "com.squareup.moshi:moshi-kotlin-codegen:1.12.0"
     // Glide
