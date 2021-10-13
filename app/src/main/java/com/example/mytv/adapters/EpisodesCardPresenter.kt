@@ -32,7 +32,7 @@ class EpisodesCardPresenter : Presenter() {
 
         icv.setOnClickListener {
             View.OnClickListener {
-              //  it.setBackgroundColor(Color.RED)
+                it.setBackgroundColor(Color.RED)
                 icv.mainImage = mDefaultCardImage
             }
 
@@ -43,22 +43,6 @@ class EpisodesCardPresenter : Presenter() {
                 .commit()
         }
 
-//        icv.setOnClickListener {
-//            View.OnClickListener {
-//                it.setBackgroundColor(Color.RED)
-//                icv.mainImage = mDefaultCardImage
-//
-//
-//            }
-//
-//
-//
-//
-//            (icv.context as MainActivity).supportFragmentManager.beginTransaction()
-//                .replace(R.id.container,Detail())
-//                .addToBackStack(null)
-//                .commit()
-//        }
         return ViewHolder(icv)
     }
 
