@@ -39,15 +39,17 @@ class MainFragment : BrowseSupportFragment() {
         val rows1Adapter = ArrayObjectAdapter(CardPresenter())
         val rows2Adapter = ArrayObjectAdapter(SeriesCardPresenter())
 
-        for (i in 0 until 10) {
-            if (i != 0) {
-                rows1Adapter.addAll(0, feed?.movies)
-                rows2Adapter.addAll(0, feed?.series)
-            }
+        for (i in 0 until feed?.series?.size!!) {
+           // if (i != 0) {
+               for(j in 0 until 9) {
+                   rows1Adapter.addAll(0, feed?.movies)
+                   rows2Adapter.addAll(0, feed?.series)
+               }
+          //  }
         }
         val windowAdapter = ArrayObjectAdapter(ListRowPresenter())
         windowAdapter.add(0, ListRow(category1, rows1Adapter))
-        windowAdapter.add(1, ListRow(category2, rows2Adapter))
+        windowAdapter.add(0, ListRow(category2, rows2Adapter))
         adapter = windowAdapter
 
     }

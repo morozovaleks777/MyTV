@@ -13,6 +13,7 @@ import com.example.mytv.fragments.EpisodesFragment
 import com.example.mytv.Feed
 import com.example.mytv.MainActivity
 import com.example.mytv.R
+import com.example.mytv.fragments.Detail
 
 
 class CardPresenter : Presenter() {
@@ -35,7 +36,7 @@ class CardPresenter : Presenter() {
             }
             (icv.context as MainActivity).supportFragmentManager.beginTransaction()
                 // .setReorderingAllowed(false)
-                .replace(R.id.container, EpisodesFragment())
+                .replace(R.id.container, Detail())
                 .addToBackStack(null)
                 .commit()
         }
@@ -66,7 +67,7 @@ class CardPresenter : Presenter() {
 
         icv.titleText = srv.title
         icv.contentText = "movie description"
-        icv.setMainImageDimensions(313, 176)
+        icv.setMainImageDimensions(626, 352)
         icv.infoVisibility = BaseCardView.CARD_REGION_VISIBLE_ACTIVATED
         icv.cardType = (BaseCardView.CARD_TYPE_INFO_UNDER_WITH_EXTRA)
 
@@ -77,7 +78,7 @@ class CardPresenter : Presenter() {
 
 
     override fun onUnbindViewHolder(viewHolder: ViewHolder?) {
-        TODO("Not yet implemented")
+
     }
 
 

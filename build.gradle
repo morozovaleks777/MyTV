@@ -18,7 +18,11 @@ allprojects {
     repositories {
         google()
         mavenCentral()
-        jcenter() // Warning: this repository is going to shut down soon
+//        jcenter() // Warning: this repository is going to shut down soon
+        maven { url "http://dl.bintray.com/pt-midtrans/maven" }
+        maven { url "https://jitpack.io" }
+        maven { url "https://mvnrepository.com/artifact/commons-validator/commons-validator" }
+
     }
 }
 
